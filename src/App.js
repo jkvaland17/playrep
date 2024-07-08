@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { PrivateroutesArray, PublicroutesArray } from "./routes";
+import PrivateRouters from "./Routers/PrivateRouter";
+import PublicRouters from "./Routers/PublicRouter";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <BrowserRouter>
+        <Routes>
+          {PublicroutesArray.map(({ component: Component, path }, key) => {
+            return (
+              <Route
+                path={path}
+                element={
+                  <PublicRouters>
+                    <Component />
+                  </PublicRouters>
+                }
+                key={key}
+              />
+            );
+          })}
+          {PrivateroutesArray?.map(({ component: Component, path }, key) => (
+            <Route
+              path={path}
+              element={
+                <PrivateRouters>
+                  <Component />
+                </PrivateRouters>
+              }
+              key={key}
+            />
+          ))}
+        </Routes>
+      </BrowserRouter>
+    </React.Suspense>
   );
-}
+};
 
 export default App;

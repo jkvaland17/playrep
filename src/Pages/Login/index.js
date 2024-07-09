@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import {
   Box,
   Button,
-  Checkbox,
   FormControl,
   InputLabel,
   OutlinedInput,
   Typography,
-  TextField,
 } from "@mui/material";
 import logo from "../../assets/images/logo.png";
 import graph from "../../assets/images/login-bar-chart.png";
@@ -16,7 +14,8 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ userName: "", password: "" });
-console.log("formData",formData);
+  console.log("formData", formData);
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setFormData({
@@ -46,7 +45,7 @@ console.log("formData",formData);
         }}
       >
         <Typography variant="h4" gutterBottom>
-          <img src={logo} />
+          <img src={logo} alt="Logo" />
         </Typography>
 
         <div className="container">
@@ -90,16 +89,6 @@ console.log("formData",formData);
                   />
                 </FormControl>
 
-                {/* <FormControl fullWidth sx={{ margin: "10px 0" }}>
-                  <InputLabel htmlFor="image-text">Enter Image Text</InputLabel>
-                  <TextField
-                    id="image-text"
-                    value={imageText}
-                    onChange={handleImageTextChange}
-                    label="Enter Image Text"
-                  />
-                </FormControl> */}
-
                 <Box
                   sx={{
                     display: "flex",
@@ -108,12 +97,6 @@ console.log("formData",formData);
                     justifyContent: "space-between",
                   }}
                 >
-                  {/* <Checkbox
-                    checked={rememberMe}
-                    onChange={handleRememberMeChange}
-                    inputProps={{ "aria-label": "controlled" }}
-                  />
-                  <Typography variant="body2">Remember Me</Typography> */}
                   <Button
                     type="submit"
                     variant="contained"
@@ -126,7 +109,7 @@ console.log("formData",formData);
             </div>
           </Box>
           <Box className="bar-chart">
-            <img src={graph} />
+            <img src={graph} alt="Graph" />
           </Box>
         </div>
       </Box>

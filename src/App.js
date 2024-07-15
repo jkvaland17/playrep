@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PrivateroutesArray, PublicroutesArray } from "./routes";
 import PrivateRouters from "./Routers/PrivateRouter";
 import PublicRouters from "./Routers/PublicRouter";
+import Layout from "./Layout";
 
 const App = () => {
   return (
@@ -27,7 +28,9 @@ const App = () => {
               path={path}
               element={
                 <PrivateRouters>
-                  <Component />
+                  <Layout>
+                    <Component />
+                  </Layout>
                 </PrivateRouters>
               }
               key={key}

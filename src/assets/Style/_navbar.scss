@@ -108,6 +108,7 @@ video {
   box-shadow: 0px 0px 14px #fff;
   height: 35px;
   line-height: 35px;
+  font-size: 14px;
 }
 .user-details i {
   margin: 10px 0 0 0;
@@ -307,7 +308,7 @@ input[type="password"] {
 }
 footer {
   float: left;
-  width: 100%;
+  width: 103.8%;
   height: auto;
   margin: 0;
   padding: 0;
@@ -315,7 +316,7 @@ footer {
   display: block;
   line-height: 40px;
   color: #fff;
-//   background: url(../images/footer-shadow.png) bottom repeat-x #16b2c3;
+  background: bottom repeat-x #16b2c3;
   border-radius: 0 0 20px 20px;
   margin: 0 0 20px 0;
   border: 1px solid #ffffff;

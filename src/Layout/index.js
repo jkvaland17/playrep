@@ -2,6 +2,9 @@ import React, { Suspense, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import Navbar from "./Navbar";
+import logo from "../assets/images/logo.png";
+import Footer from "../Layout/Footer"
+import Header from "../Layout/Header"
 
 function Layout({ children, title }) {
   const navigate = useNavigate();
@@ -10,7 +13,6 @@ function Layout({ children, title }) {
   const MenuToggle = () => {
     setShow(!show);
   };
-
 
   // Log out the user by removing cookies and local storage data
   const LogOut = () => {
@@ -25,7 +27,7 @@ function Layout({ children, title }) {
   };
   return (
     <div>
-      <div className={`dashboard_wrapper ${show ? "active" : ""}`}>
+      <div className={`dashboard_wrapper ${show ? "active" : ""} main`}>
         {/* <div className="left_side_wrapper ">
           <div className={"left_side_inner_sec"}></div>
           <div>
@@ -42,13 +44,16 @@ function Layout({ children, title }) {
           </div>
         </div> */}
 
-        <div className="right_side_wrapper">
-          <Navbar />
+        <div className="gridContainer dashboard_play">
+			<Header/>
           <Suspense fallback={""}>
-            <div className={"right_side_layout_details"}>{children}</div>
+            <div className={"right_side_layout_details container2"}>{children}</div>
           </Suspense>
+		  <Footer/>
         </div>
+		
       </div>
+
     </div>
   );
 }

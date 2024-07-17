@@ -1,9 +1,10 @@
 import React from 'react'
+import Common_Table from "../../hoc/Common_Table"
 
 const DashBoard = () => {
   return (
-    <div>
-      DashBoard
+    <div className=''>
+      <Common_Table/>
     </div>
   )
 }

@@ -9,6 +9,7 @@ const App = () => {
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
       <BrowserRouter>
+      <Layout>
         <Routes>
           {PublicroutesArray.map(({ component: Component, path }, key) => {
             return (
@@ -28,15 +29,16 @@ const App = () => {
               path={path}
               element={
                 <PrivateRouters>
-                  <Layout>
+                  
                     <Component />
-                  </Layout>
+              
                 </PrivateRouters>
               }
               key={key}
             />
           ))}
         </Routes>
+        </Layout>
       </BrowserRouter>
     </React.Suspense>
   );

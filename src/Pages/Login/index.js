@@ -29,7 +29,7 @@ const Login = () => {
 
   function generateCaptcha() {
     const chars =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      "0123456789";
     let captcha = "";
     for (let i = 0; i < 8; i++) {
       captcha += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -59,111 +59,6 @@ const Login = () => {
   };
 
   return (
-    // <div className="login">
-    //   <Box
-
-    //   >
-    //     <div>
-    //       <Box
-    //         className="login_div"
-    //         sx={{
-    //         //   display: "flex",
-    //         //   flexDirection: "column",
-    //         //   alignItems: "center",
-    //         //   justifyContent: "center",
-    //           width: "300px",
-    //         }}
-    //       >
-    // 		  {/* <Typography variant="h6" gutterBottom className="login_heading">
-    //             Login
-    //           </Typography> */}
-    // 		  <div className="login-row login-row-width"><h2 className=""> Login</h2>
-    // 		  </div>
-
-    //         <div>
-
-    //           <form onSubmit={handleSubmit}>
-    //             <div className="formData">
-    // 				<div className="user">  <label>User Name</label></div>
-
-    //               <div className="emailWrap">
-    //                 <input
-    //                   type="text"
-    //                   name="userName"
-    //                   value={formData.userName}
-    //                   onChange={(e) => handleChange(e)}
-    //                 />
-    //               </div>
-    //               {simpleValidator.current.message(
-    //                 "userName",
-    //                 formData?.userName,
-    //                 "required"
-    //               )}
-    //             </div>
-    //             <div className="formData">
-    //               <label>Password</label>
-    //               <div className="passWrap">
-    //                 <input
-    //                   type={showPassword ? "text" : "password"}
-    //                   name="password"
-    //                   value={formData.password}
-    //                   onChange={(e) => handleChange(e)}
-    //                 />
-    //               </div>
-    //               {simpleValidator.current.message(
-    //                 "password",
-    //                 formData?.password,
-    //                 "required"
-    //               )}
-    //             </div>
-    //             <div className="formData">
-    //               <label>Capcha</label>
-    //               <div className="emailWrap">
-    //                 <input
-    //                   type="text"
-    //                   name="captchaInput"
-    //                   value={formData.captchaInput}
-    //                   onChange={(e) => handleChange(e)}
-    //                 />
-    //               </div>
-    //               <div className="captcha_section">
-    //                 <span className="captcha_text">{captcha}</span>
-    //                 <RefreshIcon
-    //                   onClick={regenerateCaptcha}
-    //                   className="captcha_refresh"
-    //                 />
-    //               </div>
-    //               {simpleValidator.current.message(
-    //                 "captchaInput",
-    //                 formData?.captchaInput,
-    //                 "required"
-    //               )}
-    //             </div>
-    //             <Box
-    //               sx={{
-    //                 display: "flex",
-    //                 alignItems: "center",
-    //                 margin: "10px 0",
-    //                 justifyContent: "space-between",
-    //               }}
-    //             >
-    //               <Button
-    //                 type="submit"
-    //                 variant="contained"
-    //                 sx={{ margin: "10px 0" }}
-    //               >
-    //                 Login
-    //               </Button>
-    //             </Box>
-    //           </form>
-    //         </div>
-    //       </Box>
-    //       <Box className="bar-chart">
-    //         <img src={graph} alt="Graph" />
-    //       </Box>
-    //     </div>
-    //   </Box>
-    // </div>
     <>
       <div className="login-div">
         <div className="login-row login-row-width">
@@ -186,9 +81,9 @@ const Login = () => {
                 placeholder="User Name :"
                 type="text"
                 style={{ textTransform: "uppercase" }}
-				name="userName"
-				value={formData.userName}
-				onChange={(e) => handleChange(e)}
+                name="userName"
+                value={formData.userName}
+                onChange={(e) => handleChange(e)}
               />
             </div>
           </div>
@@ -216,10 +111,10 @@ const Login = () => {
                 onpaste="return false"
                 oncontextmenu="return false;"
                 placeholder="Password :"
-				type={showPassword ? "text" : "password"}
-				name="password"
-				value={formData.password}
-				onChange={(e) => handleChange(e)}
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={(e) => handleChange(e)}
               />
             </div>
           </div>
@@ -249,9 +144,9 @@ const Login = () => {
                 oncontextmenu="return false;"
                 placeholder="Enter Image Text -> "
                 type="text"
-				name="captchaInput"
-				value={formData.captchaInput}
-				onChange={(e) => handleChange(e)}
+                name="captchaInput"
+                value={formData.captchaInput}
+                onChange={(e) => handleChange(e)}
               />
               <span className="captcha_text">{captcha}</span>
             </div>

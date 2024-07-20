@@ -47,7 +47,7 @@ function Layout({ children, title }) {
         <div className="gridContainer dashboard_play">
 			<Header/>
           <Suspense fallback={""}>
-            <div className={"right_side_layout_details container2"}>{children}</div>
+            <div className={"container"}>{children}</div>
           </Suspense>
 		  <Footer/>
         </div>

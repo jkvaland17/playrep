@@ -1,15 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = ({ currentRoute }) => {
 	const navigate = useNavigate()
+	const location = useLocation()
 
+	const Reports = ["/Dashboard", '/revenue',"/pockerrevenue",'/pointtransfer',"/mutiplayerpointtransfer","/dailystatus"]
+	const DrawDetails = ['/funtarget', "/funroullet", "/triplefun", "/funab"]
+	const agentmail = ['/agentmail']
+	const weekreport = ['/weekreport']
+	
   return (
     <nav>
       <ul className="toresponsive" id="menu4">
         <li>
-          <a  onClick={()=>navigate('/')} className={currentRoute === "Reports " ? "active main_a" : " main_a"}>
+          <a onClick={()=>navigate('/revenue')}  className={currentRoute === "Reports" || Reports?.includes(location?.pathname) ? "active main_a" : " main_a"}>
             Reports
           </a>
           <ul>
@@ -32,8 +38,8 @@ const Navbar = ({ currentRoute }) => {
         </li>
         <li>
           <a
-            onClick=""
-            className={currentRoute === "drawDetails" ? "active main_a" : " main_a"}
+           onClick={()=>navigate("/funtarget")}
+            className={currentRoute === "drawDetails" ||  DrawDetails?.includes(location?.pathname)  ? "active main_a" : " main_a"}
           >
             Draw Details
           </a>
@@ -53,7 +59,7 @@ const Navbar = ({ currentRoute }) => {
           </ul>
         </li>
         <li>
-          <a onClick="" className={currentRoute === "mailReport" ? "active main_a" : "main_a"}>
+          <a  onClick={()=>navigate("/agentmail")} className={currentRoute === "mailReport" || agentmail?.includes(location?.pathname) ? "active main_a" : "main_a"}>
             Mail Report
           </a>
           <ul>
@@ -65,7 +71,7 @@ const Navbar = ({ currentRoute }) => {
         <li>
           <a
             onClick={()=>navigate("/weekreport")}
-            className={currentRoute === "weeklyDetailesReport" ? "active main_a" : "main_a"}
+            className={currentRoute === "weeklyDetailesReport" || weekreport?.includes(location?.pathname) ? "active main_a" : "main_a"}
           >
             Weekly Details Reports
           </a>

@@ -1,12 +1,17 @@
 import React from "react";
 import DayWiseDropDown from "./DayWiseDropDown";
 import CustomDateFilter from "./CustomDateFilter";
+import SearchFilter from "./SearchFilter";
 
 const MainCommonFilter = ({
   filterData,
   setFilterData,
   searchApiHandler,
   addPropsFilter,
+  pagination,
+  setPagination,
+  isSearchTooltip,
+  userSearchApiHandler,
 }) => {
   const commonOptions = ["All Days", "Custom"];
   return (
@@ -26,6 +31,16 @@ const MainCommonFilter = ({
               addPropsFilter={addPropsFilter?.isTDSChallan}
             />
           )}
+          <SearchFilter
+            filterData={filterData}
+            setFilterData={setFilterData}
+            searchApiHandler={searchApiHandler}
+            pagination={pagination}
+            setPagination={setPagination}
+            isSearchTooltip={isSearchTooltip}
+            userSearchApiHandler={userSearchApiHandler}
+            isTdsUser={addPropsFilter?.isTdsUser}
+          />
         </div>
       </div>
     </>

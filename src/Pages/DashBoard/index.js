@@ -3,6 +3,7 @@ import { data } from "../DashBoard/data";
 import CustomTable from "../../hoc/CommonTable";
 import MainCommonFilter from "../../Components/MainCommonFilter";
 import moment from "moment";
+import { Paper } from "@mui/material";
 
 console.log("data", data);
 
@@ -37,7 +38,7 @@ const DashBoard = () => {
   });
 
   return (
-    <div className="">
+    <Paper sx={{ p: 3 }} className="outer-box game-rules-section">
       <div className={"justify_content_between"}>
           <div className={"d_flex"} style={{justifyContent:"end"}}>
             <MainCommonFilter
@@ -63,7 +64,7 @@ const DashBoard = () => {
         pagination={pagination}
         setPagination={setPagination}
       />
-    </div>
+      </Paper>
   );
 };
 

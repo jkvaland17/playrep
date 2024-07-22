@@ -12,6 +12,7 @@ const Login = () => {
     userName: "",
     password: "",
     captchaInput: "",
+    checked: false,
   });
   const [showPassword, setShowPassword] = useState(false);
   const [captcha, setCaptcha] = useState(generateCaptcha());
@@ -20,16 +21,15 @@ const Login = () => {
   const forceUpdate = useCallback(() => updateState({}), []);
 
   const handleChange = (e) => {
-    const { value, name } = e.target;
+    const { value, name, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
   function generateCaptcha() {
-    const chars =
-      "0123456789";
+    const chars = "0123456789";
     let captcha = "";
     for (let i = 0; i < 8; i++) {
       captcha += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -45,8 +45,9 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (simpleValidator.current.allValid()) {
-      if (formData.captchaInput !== captcha) {
-      } else if (
+      if (
+        formData.captchaInput === captcha &&
+        formData.checked === true &&
         formData.userName === "admin" &&
         formData.password === "admin"
       ) {
@@ -87,7 +88,7 @@ const Login = () => {
               />
             </div>
           </div>
-          <span id="errtext" className="field-validation-error">
+          <span className="field-validation-error">
             {simpleValidator.current.message(
               "userName",
               formData?.userName,
@@ -118,7 +119,7 @@ const Login = () => {
               />
             </div>
           </div>
-          <span id="errtext" className="field-validation-error">
+          <span className="field-validation-error">
             {simpleValidator.current.message(
               "password",
               formData?.password,
@@ -151,18 +152,22 @@ const Login = () => {
               <span className="captcha_text">{captcha}</span>
             </div>
           </div>
-
-          <span id="errtext" className="field-validation-error">
-            {" "}
+          <span className="field-validation-error">
             {simpleValidator.current.message(
               "captchaInput",
               formData?.captchaInput,
               "required"
-            )}{" "}
+            )}
           </span>
           <div className="login-row login-submit">
             <div className="login-fields">
-              <input type="checkbox" /> Remember Me
+              <input
+                type="checkbox"
+                name="checked"
+                value={formData?.checked}
+                onChange={(e) => handleChange(e)}
+              />{" "}
+              Remember Me
               <span style={{ float: "right" }} />
               &nbsp;
             </div>

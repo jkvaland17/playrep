@@ -113,6 +113,24 @@
   .select2-container--default .select2-selection--single .select2-selection__rendered {
     line-height: 48px !important;
   }
+  .filter_inner_tab_info{
+    display: flex;
+	justify-content: center;
+    align-items: center;
+  	gap: 20px;
+	.search-filter-section{
+		display: flex;
+		justify-content: center;
+    	align-items: center;
+		gap: 10px;
+		input{
+			padding: 12px 14px;
+		}
+		.search_btn{
+			height: 50px;
+		}
+	}
+  }
 
 }
 

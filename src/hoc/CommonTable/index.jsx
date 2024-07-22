@@ -35,7 +35,6 @@ const CustomTable = (props) => {
 
   // Handler for changing the page in pagination
   const handleChangePage = (event, newPage) => {
-    debugger
     setPagination({
       ...pagination,
       page: newPage,
@@ -160,7 +159,7 @@ const CustomTable = (props) => {
     return stabilizedThis.map((el) => el[0]);
   }
 
-
+  const paginatedData = rowData.slice(pagination.page * pagination.rowsPerPage, pagination.page * pagination.rowsPerPage + pagination.rowsPerPage);
   return (
     <div ref={ref} >
       <TableContainer className={"data-table"}>
@@ -185,7 +184,8 @@ const CustomTable = (props) => {
               />
             )}
             <TableContent
-              rowData={rowData}
+              // rowData={rowData}
+              rowData={paginatedData}
               stableSort={stableSort}
               getComparator={getComparator}
               headCells={headCells}

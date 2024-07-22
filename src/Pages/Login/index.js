@@ -4,6 +4,7 @@ import graph from "../../assets/images/login-bar-chart.png";
 import { useNavigate } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import FilledButton from "../../Components/FileButton";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -170,15 +171,7 @@ const Login = () => {
               <span style={{ float: "right" }} />
               &nbsp;
             </div>
-            <button
-              type="submit"
-              name="btnCheckLogin"
-              id="btnCheckLogin"
-              defaultValue="Login"
-              className="login_btn"
-            >
-              login
-            </button>
+            <FilledButton type={'submit'} value={'Login'} className={'btn loader_css login_btn'} />
           </div>
         </form>
       </div>

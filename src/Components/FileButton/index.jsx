@@ -7,7 +7,7 @@ const FilledButton = ({ type = "button", className = "btn btn_gray", value = "Cl
         <button disabled={loading} {...rest} type={type} className={className}>
             {(loading && !disabledLoading) ?
                 <div className={loader_class ? `btn-loader ${loader_class} btn-loader-small` : "btn-loader btn-loader-small"}>
-                    <BtnLoader/>
+                    <CircularProgress/>
                 </div> : value}
         </button>
     );

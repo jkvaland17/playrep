@@ -1,10 +1,12 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Box} from "@mui/material";
+import { Box } from "@mui/material";
 import graph from "../../assets/images/login-bar-chart.png";
 import { useNavigate } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import FilledButton from "../../Components/FileButton";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -117,6 +119,13 @@ const Login = () => {
                 onChange={(e) => handleChange(e)}
               />
             </div>
+            <button
+              type="button"
+              className="sd_passoword_toggle cursor_pointer"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {!showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            </button>
           </div>
           <span className="field-validation-error">
             {simpleValidator.current.message(
@@ -170,7 +179,11 @@ const Login = () => {
               <span style={{ float: "right" }} />
               &nbsp;
             </div>
-            <FilledButton type={'submit'} value={'Login'} className={'btn loader_css login_btn'} />
+            <FilledButton
+              type={"submit"}
+              value={"Login"}
+              className={"btn loader_css login_btn"}
+            />
           </div>
         </form>
       </div>

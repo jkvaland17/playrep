@@ -831,6 +831,19 @@ footer {
   // padding: 2px;
 }
 
-.field-validation-error{
-  // margin-left: 26px;
+.sd_passoword_toggle {
+  border: none;
+  width: 20px;
+  margin-right: 15px;
+  background: transparent !important;
+  min-width: auto !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  svg{
+    cursor: pointer;
+    color: #1d1f2b;
+  }
 }

@@ -79,18 +79,12 @@
 //   }
 // }
 
-// .captcha_section {
-//   display: flex;
-//   align-items: center;
-//   .captcha_text {
-//     color: #00C000;
-//     font-size: 24px;
-//     font-weight: 700;
-//   }
-//   .captcha_refresh {
-//     margin-left: 10px;
-//   }
-// }
+  .captcha_text {
+    color: #00C000;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
 
 // .errorFiled {
 //     color: red !important;
@@ -107,7 +101,6 @@
 //   }
 
 
-@charset "utf-8";
 /* Simple fluid media
    Note: Fluid media requires that you remove the media's height and width attributes from the HTML
    http://www.alistapart.com/articles/fluid-images/ 

@@ -21,30 +21,7 @@
         margin-left: 5px;
         margin-right: 5px;
       }
-      .custom_date_filter{
-        display: flex;
-        align-items: center;
-        height: 52px;
-        //margin-bottom: 10px;
-        .date-to{
-          margin-left: 5px;
-          margin-right: 5px;
-          font-weight: 600;
-          font-size: 14px;
-          font-family: "Inter", sans-serif;
-        }
-        .start-date-picker,.end-date-picker{
-          height: 100%;
-          display: flex;
-          align-items: center;
-          border: 1px solid  #ced4da;
-          border-radius: 4px;
-          padding: 0 0 0 11px;
-          margin-left: 5px;
-          margin-right: 5px;
-          font-family: "Inter", sans-serif;
-        }
-      }
+    
       .search-filter-section{
         height: 52px;
         margin-left: 5px;
@@ -130,6 +107,31 @@
 			height: 50px;
 		}
 	}
+
+	.custom_date_filter{
+        display: flex;
+        align-items: center;
+        height: 47px;
+        //margin-bottom: 10px;
+        .date-to{
+          margin-left: 5px;
+          margin-right: 5px;
+          font-weight: 600;
+          font-size: 14px;
+          font-family: "Inter", sans-serif;
+        }
+        .start-date-picker,.end-date-picker{
+          height: 100%;
+          display: flex;
+          align-items: center;
+          border: 1px solid  #ced4da;
+          border-radius: 4px;
+          padding: 0 0 0 11px;
+          margin-left: 5px;
+          margin-right: 5px;
+          font-family: "Inter", sans-serif;
+        }
+      }
   }
 
 }

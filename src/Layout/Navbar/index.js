@@ -1,74 +1,78 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ currentRoute }) => {
+	const navigate = useNavigate()
+
   return (
     <nav>
       <ul className="toresponsive" id="menu4">
         <li>
-          <a href="#" className={currentRoute === "Reports" ? "active" : ""}>
+          <a  onClick={()=>navigate('/')} className={currentRoute === "Reports " ? "active main_a" : " main_a"}>
             Reports
           </a>
           <ul>
             <li>
-              <a href="/revenue">Revenue</a>
+              <a onClick={()=>navigate('/revenue')}>Revenue</a>
             </li>
             <li className="new-opt">
-              <a href="/pockerrevenue">Poker Revenue</a>
+              <a onClick={()=>navigate("/pockerrevenue")}>Poker Revenue</a>
             </li>
             <li>
-              <a href="/pointtransfer">Point Transfer</a>
+              <a onClick={()=>navigate('/pointtransfer')}>Point Transfer</a>
             </li>
             <li>
-              <a href="/mutiplayerpointtransfer">Multiplayer Point Transfer</a>
+              <a onClick={()=>navigate("/mutiplayerpointtransfer")}>Multiplayer Point Transfer</a>
             </li>
             <li>
-              <a href="/dailystatus">Daily Status</a>
+              <a onClick={()=>navigate("/dailystatus")}>Daily Status</a>
             </li>
           </ul>
         </li>
         <li>
           <a
-            href="#"
-            className={currentRoute === "drawDetails" ? "active" : ""}
+            onClick=""
+            className={currentRoute === "drawDetails" ? "active main_a" : " main_a"}
           >
             Draw Details
           </a>
           <ul>
             <li>
-              <a href="/funtarget">Fun Target</a>
+              <a onClick={()=>navigate("/funtarget")}>Fun Target</a>
             </li>
             <li>
-              <a href="/funroullet">Fun Roullet</a>
+              <a onClick={()=>navigate("/funroullet")}>Fun Roullet</a>
             </li>
             <li>
-              <a href="/triplefun">Triple Fun</a>
+              <a onClick={()=>navigate("/triplefun")}>Triple Fun</a>
             </li>
             <li>
-              <a href="/funab">Fun AB</a>
+              <a onClick={()=>navigate("/funab")}>Fun AB</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#" className={currentRoute === "mailReport" ? "active" : ""}>
+          <a onClick="" className={currentRoute === "mailReport" ? "active main_a" : "main_a"}>
             Mail Report
           </a>
           <ul>
             <li>
-              <a href="/agentmail">Agent Mail</a>
+              <a onClick={()=>navigate("/agentmail")}>Agent Mail</a>
             </li>
           </ul>
         </li>
         <li>
           <a
-            href="/weekreport"
-            className={currentRoute === "weeklyDetailesReport" ? "active" : ""}
+            onClick={()=>navigate("/weekreport")}
+            className={currentRoute === "weeklyDetailesReport" ? "active main_a" : "main_a"}
           >
             Weekly Details Reports
           </a>
           <ul></ul>
         </li>
         <li>
-          <a href="/">LogOut</a>
+          <a className="main_a" onClick={()=>navigate("/")}>LogOut</a>
           <ul></ul>
         </li>
       </ul>

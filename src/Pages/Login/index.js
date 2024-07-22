@@ -81,7 +81,6 @@ const Login = () => {
                 maxLength={10}
                 placeholder="User Name :"
                 type="text"
-                style={{ textTransform: "uppercase" }}
                 name="userName"
                 value={formData.userName}
                 onChange={(e) => handleChange(e)}

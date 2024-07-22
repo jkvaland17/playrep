@@ -1,6 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Box, Button, Typography } from "@mui/material";
-import logo from "../../assets/images/logo.png";
+import { Box} from "@mui/material";
 import graph from "../../assets/images/login-bar-chart.png";
 import { useNavigate } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";

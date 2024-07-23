@@ -7,8 +7,6 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import FilledButton from "../../Components/FileButton";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { loginUser } from "../../Redux/login/action";
-import { useDispatch } from "react-redux";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,7 +26,6 @@ const Login = () => {
   });
   const [loader, setLoader] = useState(false);
   const [, updateState] = useState({});
-  const dispatch = useDispatch();
   const forceUpdate = useCallback(() => updateState({}), []);
 
   const handleChange = (e) => {
@@ -90,30 +87,30 @@ const Login = () => {
     }
   };
 
-  const handleSubmitHandler = (e) => {
-    e.preventDefault();
-    if (simpleValidator.current.allValid()) {
-      setLoader(true);
-      let payload = {
-        ...formData,
-      };
-      dispatch(loginUser(payload)).then((res) => {
-        if (res.data.success) {
-          navigate("/dashboard");
-          setLoader(false);
-        } else {
-          setLoader(false);
-          handleOpenModal("CommonPop", {
-            header: "Error",
-            body: res.data.message || res?.data?.msg,
-          });
-        }
-      });
-    } else {
-      simpleValidator.current.showMessages();
-      forceUpdate();
-    }
-  };
+  // const handleSubmitHandler = (e) => {
+  //   e.preventDefault();
+  //   if (simpleValidator.current.allValid()) {
+  //     setLoader(true);
+  //     let payload = {
+  //       ...formData,
+  //     };
+  //     dispatch(loginUser(payload)).then((res) => {
+  //       if (res.data.success) {
+  //         navigate("/dashboard");
+  //         setLoader(false);
+  //       } else {
+  //         setLoader(false);
+  //         handleOpenModal("CommonPop", {
+  //           header: "Error",
+  //           body: res.data.message || res?.data?.msg,
+  //         });
+  //       }
+  //     });
+  //   } else {
+  //     simpleValidator.current.showMessages();
+  //     forceUpdate();
+  //   }
+  // };
 
   return (
     <>

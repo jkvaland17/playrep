@@ -1,13 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.scss';
-import reportWebVitals from './reportWebVitals';
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.scss";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import store from "./Redux/store";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "./ErrorFallback";
+import { MoonLoader } from "react-spinners";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Suspense fallback={<MoonLoader color="#20b7c9" />}>
+          <App />
+        </Suspense>
+      </ErrorBoundary>
+    </Provider>
   </React.StrictMode>
 );
 

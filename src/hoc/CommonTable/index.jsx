@@ -67,7 +67,7 @@ const CustomTable = (props) => {
     };
     return (
       <TableHead>
-        <TableRow>
+        <TableRow sx={{ backgroundColor: '#20b7c9'} }>
           {headCells.map((headCell) => {
             return headCell.type === "hide" ? (
               <th className={"hide_table_th"} />
@@ -76,6 +76,7 @@ const CustomTable = (props) => {
                 key={headCell.id}
                 sortDirection={orderBy === headCell.id ? order : false}
                 className={"table_cell_thead"}
+				sx={{ color: '#fff' }}
               >
                 {headCell.isDisbanding &&
                   (headCell.label === "Action" ||
@@ -166,7 +167,7 @@ const CustomTable = (props) => {
         <Table
           sx={{ minWidth: 750 }}
           aria-labelledby="tableTitle"
-          size={"medium"}
+          size={"small"}
           className="publish_table"
         >
           <EnhancedTableHead

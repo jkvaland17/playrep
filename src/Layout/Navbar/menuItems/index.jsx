@@ -6,7 +6,7 @@ const Reports = ["/Dashboard", "/revenue", "/pockerrevenue", "/pointtransfer", "
 export const menuItems = [  
 		{  
 			title: 'Reports',  
-			path: '/revenue',  
+			path: '#',  
 			subItems: [  
 				{ title: 'Revenue', path: '/revenue' },  
 				{ title: 'Poker Revenue', path: '/pockerrevenue' },  
@@ -18,7 +18,7 @@ export const menuItems = [
 		},  
 		{  
 			title: 'Draw Details',  
-			path: '/funtarget',  
+			path: '#',  
 			subItems: [  
 				{ title: 'Fun Target', path: '/funtarget' },  
 				{ title: 'Fun Roullet', path: '/funroullet' },  
@@ -29,7 +29,7 @@ export const menuItems = [
 		},  
 		{  
 			title: 'Mail Report',  
-			path: '/agentmail',  
+			path: '#',  
 			subItems: [  
 				{ title: 'Agent Mail', path: '/agentmail' },  
 			],  

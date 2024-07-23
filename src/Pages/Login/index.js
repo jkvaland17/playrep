@@ -7,6 +7,8 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import FilledButton from "../../Components/FileButton";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { loginUser } from "../../Redux/login/action";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,7 +21,14 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [captcha, setCaptcha] = useState(generateCaptcha());
   const simpleValidator = useRef(new SimpleReactValidator());
+  const [modalDetails, setModalDetails] = useState({
+    modalValue: "",
+    modalName: "",
+    modalIsOpen: false,
+  });
+  const [loader, setLoader] = useState(false);
   const [, updateState] = useState({});
+  const dispatch = useDispatch();
   const forceUpdate = useCallback(() => updateState({}), []);
 
   const handleChange = (e) => {
@@ -55,6 +64,51 @@ const Login = () => {
       ) {
         navigate("/dashboard");
       }
+    } else {
+      simpleValidator.current.showMessages();
+      forceUpdate();
+    }
+  };
+
+  const handleOpenModal = (type, data) => {
+    const modalValue = data;
+    const modalName = type;
+    const modalIsOpen = true;
+
+    switch (type) {
+      case "CommonPop":
+        setModalDetails({
+          ...modalDetails,
+          modalValue,
+          modalName,
+          modalIsOpen,
+        });
+        break;
+      default:
+        setModalDetails({ ...modalDetails, modalIsOpen: false });
+        break;
+    }
+  };
+
+  const handleSubmitHandler = (e) => {
+    e.preventDefault();
+    if (simpleValidator.current.allValid()) {
+      setLoader(true);
+      let payload = {
+        ...formData,
+      };
+      dispatch(loginUser(payload)).then((res) => {
+        if (res.data.success) {
+          navigate("/dashboard");
+          setLoader(false);
+        } else {
+          setLoader(false);
+          handleOpenModal("CommonPop", {
+            header: "Error",
+            body: res.data.message || res?.data?.msg,
+          });
+        }
+      });
     } else {
       simpleValidator.current.showMessages();
       forceUpdate();
@@ -183,6 +237,7 @@ const Login = () => {
               type={"submit"}
               value={"Login"}
               className={"btn loader_css login_btn"}
+              loading={loader}
             />
           </div>
         </form>

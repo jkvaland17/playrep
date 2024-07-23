@@ -1,135 +1,18 @@
-// input {
-//   display: flex;
-//   align-items: stretch;
-//   min-height: 48px;
-//   border-radius: 4px;
-//   padding: 0 16px;
-//   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-//   background-color: unset;
-//   border: 1px solid #cfd8e3;
-//   width: 100%;
-//   margin-bottom: 10px;
-//   margin-top: 7px;
-// }
-
-// .formData {
-//   .sd_password_eye_open {
-//     cursor: pointer;
-//   }
-//   label {
-//     color: #27303f;
-//     font-weight: 500;
-//     font-size: 14px;
-//     line-height: 18px;
-//   }
-//   input {
-//     outline-style: none;
-//     width: 100%;
-//     border-radius: 5px;
-//     // border: 1px solid #cfd8e3;
-//     // margin: 8px 0 5px;
-//     // height: 48px;
-//   }
-//   .passWrap {
-//     margin: 8px 0 5px;
-//     height: 48px;
-//     display: block;
-//     width: 115%;
-//     border: 1px solid #cfd8e3;
-//     outline: none;
-//     font-style: normal;
-//     font-size: 12px;
-//     line-height: 14px;
-//     color: #000;
-//     background: unset;
-//     border-radius: 5px;
-//     display: flex;
-//     align-items: center;
-//     .passInput {
-//       width: 100%;
-//       display: flex;
-//       height: 48px;
-//       input {
-//         width: 100% !important;
-//         border: none;
-//         border-radius: 0;
-//         margin: 0;
-//         font-style: normal;
-//         font-size: 14px;
-//         line-height: 14px;
-//         color: #000;
-//         background: transparent;
-//       }
-//       .sd_passoword_toggle {
-//         border: none;
-//         width: 20px;
-//         margin-right: 15px;
-//         background: transparent !important;
-//         min-width: auto !important;
-//         padding: 0 !important;
-//         display: flex;
-//         align-items: center;
-//         cursor: pointer;
-//         svg {
-//           cursor: pointer;
-//           color: #1d1f2b;
-//         }
-//       }
-//     }
-//   }
-// }
-
   .captcha_text {
     color: #00C000;
     font-size: 24px;
     font-weight: 700;
   }
 
-
-// .errorFiled {
-//     color: red !important;
-//     font-weight: 500 !important;
-//     font-size: 14px;
-//   }
-
-//   .srv-validation-message {
-//     color: #c81e1e;
-//     margin: 5px 0;
-//     font-size: 12px;
-//     font-weight: 600;
-//     font-family: Inter, sans-serif !important;
-//   }
-
-
-/* Simple fluid media
-   Note: Fluid media requires that you remove the media's height and width attributes from the HTML
-   http://www.alistapart.com/articles/fluid-images/ 
-*/
 img,
 object,
 embed,
 video {
   max-width: 100%;
 }
-/* IE 6 does not support max-width so default to width 100% */
 .ie6 img {
   width: 100%;
 }
-
-/*
-	Dreamweaver Fluid Grid Properties
-	----------------------------------
-	dw-num-cols-mobile:		5;
-	dw-num-cols-tablet:		8;
-	dw-num-cols-desktop:	10;
-	dw-gutter-percentage:	25;
-	
-	Inspiration from "Responsive Web Design" by Ethan Marcotte 
-	http://www.alistapart.com/articles/responsive-web-design
-	
-	and Golden Grid System by Joni Korpi
-	http://goldengridsystem.com/
-*/
 
 /* Mobile Layout: 480px and below. */
 .top-bar {
@@ -137,7 +20,6 @@ video {
   width: 100%;
   height: 2px;
   background: #737373;
-  /*border-top:5px solid #000000;*/
   border-bottom: 2px solid #249fab;
   position: fixed;
   z-index: 3;

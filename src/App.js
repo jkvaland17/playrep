@@ -4,10 +4,11 @@ import { PrivateroutesArray, PublicroutesArray } from "./routes";
 import PrivateRouters from "./Routers/PrivateRouter";
 import PublicRouters from "./Routers/PublicRouter";
 import Layout from "./Layout";
+import { MoonLoader } from "react-spinners";
 
 const App = () => {
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
+    <React.Suspense fallback={<MoonLoader color="#20b7c9" />}>
       <BrowserRouter>
       <Layout>
         <Routes>

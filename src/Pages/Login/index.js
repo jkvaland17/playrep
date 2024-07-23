@@ -3,7 +3,6 @@ import { Box } from "@mui/material";
 import graph from "../../assets/images/login-bar-chart.png";
 import { useNavigate } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";
-import RefreshIcon from "@mui/icons-material/Refresh";
 import FilledButton from "../../Components/FileButton";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -44,11 +43,6 @@ const Login = () => {
     }
     return captcha;
   }
-
-  const regenerateCaptcha = () => {
-    const newCaptcha = generateCaptcha();
-    setCaptcha(newCaptcha);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -132,7 +126,7 @@ const Login = () => {
                 data-val-required="Please Provide Login ID"
                 id="username"
                 maxLength={10}
-                placeholder="User Name :"
+                placeholder="Enter User Name"
                 type="text"
                 name="userName"
                 value={formData.userName}
@@ -163,7 +157,7 @@ const Login = () => {
                 ondrop="return false"
                 onpaste="return false"
                 oncontextmenu="return false;"
-                placeholder="Password :"
+                placeholder="Enter Password"
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
@@ -202,7 +196,7 @@ const Login = () => {
                 ondrop="return false"
                 onpaste="return false"
                 oncontextmenu="return false;"
-                placeholder="Enter Image Text -> "
+                placeholder="Enter Image Text"
                 type="text"
                 name="captchaInput"
                 value={formData.captchaInput}

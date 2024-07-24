@@ -729,3 +729,21 @@ footer {
     color: #1d1f2b;
   }
 }
+
+.formloginBtn {
+  padding: 10px;
+  max-width: 90px;
+  width: 100%;
+  border-radius: 5px;
+  border: transparent;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background: #20b7c9;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Inter", sans-serif !important;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+}

@@ -7,7 +7,9 @@ import FilledButton from "../../Components/FileButton";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useDispatch } from "react-redux";
-import {loginUser} from "../../Redux/login/action"
+import { loginUser } from "../../Redux/login/action";
+import CommonModal from "../../hoc/CommonModal";
+import PopComponent from "../../hoc/PopContent";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,11 +27,12 @@ const Login = () => {
     modalName: "",
     modalIsOpen: false,
   });
+  let Modal = PopComponent[modalDetails?.modalName];
   const [loader, setLoader] = useState(false);
   const [, updateState] = useState({});
   const forceUpdate = useCallback(() => updateState({}), []);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { value, name, type, checked } = e.target;
@@ -50,22 +53,28 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (simpleValidator.current.allValid()) {
-      if (
-        formData.captchaInput === captcha &&
-        formData.checked === true &&
-        formData.userName &&
-        formData.password 
-      ) {
-        const data = {...formData}
-        dispatch(loginUser(data)).then((e)=>{
-          if(e.status === 200){
-            navigate("/dashboard");
-          }else{
-            
-          }
-        })
-      }
+    if (
+      simpleValidator.current.allValid() &&
+      formData.captchaInput === captcha &&
+      formData.checked === true
+    ) {
+      setLoader(true);
+      let payload = {
+        ...formData,
+      };
+      dispatch(loginUser(payload)).then((res) => {
+        if (res.data.success) {
+          navigate("/dashboard");
+          setLoader(false);
+        } else {
+          setLoader(false);
+          console.log();
+          handleOpenModal("CommonPop", {
+            header: "Error",
+            body: res.data.message || res?.data?.msg,
+          });
+        }
+      });
     } else {
       simpleValidator.current.showMessages();
       forceUpdate();
@@ -91,31 +100,6 @@ const Login = () => {
         break;
     }
   };
-
-  // const handleSubmitHandler = (e) => {
-  //   e.preventDefault();
-  //   if (simpleValidator.current.allValid()) {
-  //     setLoader(true);
-  //     let payload = {
-  //       ...formData,
-  //     };
-  //     dispatch(loginUser(payload)).then((res) => {
-  //       if (res.data.success) {
-  //         navigate("/dashboard");
-  //         setLoader(false);
-  //       } else {
-  //         setLoader(false);
-  //         handleOpenModal("CommonPop", {
-  //           header: "Error",
-  //           body: res.data.message || res?.data?.msg,
-  //         });
-  //       }
-  //     });
-  //   } else {
-  //     simpleValidator.current.showMessages();
-  //     forceUpdate();
-  //   }
-  // };
 
   return (
     <>
@@ -238,7 +222,7 @@ const Login = () => {
             <FilledButton
               type={"submit"}
               value={"Login"}
-              className={"btn loader_css login_btn"}
+              className={"formloginBtn loader_css"}
               loading={loader}
             />
           </div>
@@ -247,6 +231,17 @@ const Login = () => {
       <Box className="bar-chart">
         <img src={graph} alt="Graph" />
       </Box>
+      <CommonModal
+        className={"Approved-reject-section"}
+        modalIsOpen={modalDetails.modalIsOpen}
+        handleOpenModal={handleOpenModal}
+      >
+        <Modal
+          modalValue={modalDetails.modalValue}
+          handleOpenModal={handleOpenModal}
+          modalIsOpen={modalDetails.modalIsOpen}
+        />
+      </CommonModal>
     </>
   );
 };

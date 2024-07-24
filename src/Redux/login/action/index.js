@@ -6,8 +6,9 @@ export const loginUser = (payload) => async (dispatch, getState, api) => {
     return await api
         .post(AUTH_LOGIN, payload)
         .then((res) => {
+            console.log("res",res)
             document.cookie = "test=true; expires=1/2;"
-            const dataToEncrypt = JSON.stringify(res.data.data?.userData);
+            const dataToEncrypt = JSON.stringify(res.data.data?.user);
             const secretKey = process.env.REACT_APP_CALL_BREAK_TOKEN_KEY;
             const encryptedUserData = CryptoJS.AES.encrypt(dataToEncrypt, secretKey).toString();
             document.cookie = `userDetails=${encodeURIComponent(encryptedUserData)}; expires=Thu, 01 Jan 2025 00:00:00 UTC; path=/`;

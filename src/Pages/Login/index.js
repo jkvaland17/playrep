@@ -6,6 +6,8 @@ import SimpleReactValidator from "simple-react-validator";
 import FilledButton from "../../Components/FileButton";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { useDispatch } from "react-redux";
+import {loginUser} from "../../Redux/login/action"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,6 +28,8 @@ const Login = () => {
   const [loader, setLoader] = useState(false);
   const [, updateState] = useState({});
   const forceUpdate = useCallback(() => updateState({}), []);
+
+  const dispatch = useDispatch()
 
   const handleChange = (e) => {
     const { value, name, type, checked } = e.target;
@@ -50,10 +54,17 @@ const Login = () => {
       if (
         formData.captchaInput === captcha &&
         formData.checked === true &&
-        formData.userName === "admin" &&
-        formData.password === "admin"
+        formData.userName &&
+        formData.password 
       ) {
-        navigate("/dashboard");
+        const data = {...formData}
+        dispatch(loginUser(data)).then((e)=>{
+          if(e.status === 200){
+            navigate("/dashboard");
+          }else{
+            
+          }
+        })
       }
     } else {
       simpleValidator.current.showMessages();

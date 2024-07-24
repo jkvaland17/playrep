@@ -2,11 +2,21 @@
 import React from 'react';  
 import { useNavigate, useLocation } from 'react-router-dom';  
 import { menuItems } from "./menuItems"
-
+import Cookies from 'js-cookie';
 const Navigation = ({ isOpen, currentRoute }) => {  
     const navigate = useNavigate();  
     const location = useLocation();  
 
+    const LogOut = () => {
+        Cookies.remove('token', { path: '/' });
+        Cookies.remove('agentDetails', { path: '/' });
+        Cookies.remove('userDetails', { path: '/' });
+        Cookies.remove('agentData', { path: '/' });
+        Cookies.remove('userdata', { path: '/' });
+        localStorage.removeItem('agentData');
+        localStorage.removeItem('userdata');
+        navigate('/');
+    };
     return (  
         <nav>  
             <ul className={`toresponsive ${isOpen ? 'show' : ''}`} id="">  
@@ -32,7 +42,7 @@ const Navigation = ({ isOpen, currentRoute }) => {
                     </li>  
                 ))}  
                 <li>  
-                    <a className="main_a a_pointer" onClick={() => navigate("/")}>LogOut</a>  
+                    <a className="main_a a_pointer" onClick={() => LogOut()}>LogOut</a>  
                 </li>  
             </ul>  
         </nav>  

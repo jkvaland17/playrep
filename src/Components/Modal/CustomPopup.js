@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const style = {
@@ -7,7 +7,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 508,
+  width: 400,
   bgColor: "background.paper",
   boxShadow: 24,
   p: 5,

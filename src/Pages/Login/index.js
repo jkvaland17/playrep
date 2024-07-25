@@ -53,31 +53,36 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (
-      simpleValidator.current.allValid() &&
-      formData.captchaInput === captcha &&
-      formData.checked === true
-    ) {
-      setLoader(true);
-      let payload = {
-        ...formData,
-      };
-      dispatch(loginUser(payload)).then((res) => {
-        if (res.data.success) {
-          navigate("/dashboard");
-          setLoader(false);
-        } else {
-          setLoader(false);
-          console.log();
-          handleOpenModal("CommonPop", {
-            header: "Error",
-            body: res.data.message || res?.data?.msg,
-          });
-        }
+    if (formData.captchaInput !== captcha || formData.checked !== true) {
+      handleOpenModal("CommonPop", {
+        header: "Error",
+        body:
+          formData.captchaInput !== captcha
+            ? "Enter Valid Captcha"
+            : "Please Select Chacker",
       });
     } else {
-      simpleValidator.current.showMessages();
-      forceUpdate();
+      if (simpleValidator.current.allValid()) {
+        setLoader(true);
+        let payload = {
+          ...formData,
+        };
+        dispatch(loginUser(payload)).then((res) => {
+          if (res.data.success) {
+            navigate("/dashboard");
+            setLoader(false);
+          } else {
+            setLoader(false);
+            handleOpenModal("CommonPop", {
+              header: "Error",
+              body: res.data.message || res?.data?.msg,
+            });
+          }
+        });
+      } else {
+        simpleValidator.current.showMessages();
+        forceUpdate();
+      }
     }
   };
 

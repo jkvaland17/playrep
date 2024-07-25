@@ -5,8 +5,6 @@ import MainCommonFilter from "../../Components/MainCommonFilter";
 import moment from "moment";
 import { Paper } from "@mui/material";
 
-console.log("data", data);
-
 let columns = [
   {
     id: "fullName",

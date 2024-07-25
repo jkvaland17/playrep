@@ -31,16 +31,16 @@ const PointTransfer = () => {
 
   let columns = [
     {
-      id: "fullName",
-      label: "fullName",
+      id: "from_member_id",
+      label: "from_member_id",
     },
     {
-      id: "deviceId",
-      label: "deviceId",
+      id: "to_member_id",
+      label: "to_member_id",
     },
     {
-      id: "country",
-      label: "country",
+      id: "type",
+      label: "type",
     },
   ];
 
@@ -55,17 +55,11 @@ const PointTransfer = () => {
       start: (pagination.page + 1 - 1) * pagination.rowsPerPage,
     };
 	  dispatch(getPointTransferList(payload)).then((res) => {
-      console.log("res",res);
       setLoader(false);
-      if (res.data.success) {
-        setRowData({
-          ...rowData,
-          list: res.data.data?.docs,
-          totalDocs: res.data.data.totalDocs || 0,
-        });
-      } else {
-        setRowData({ list: [], totalDocs: 0 });
-      }
+      setRowData({
+        ...rowData,
+        list: res?.data,
+      });
     });
   };
 
@@ -77,7 +71,8 @@ const PointTransfer = () => {
         <Paper>
           <CustomTable
             headCells={columns}
-            rowData={data.data.docs}
+            rowData={rowData.list}
+            loading={loader}
             totalDocs={data?.data?.totalDocs}
             pagination={pagination}
             setPagination={setPagination}

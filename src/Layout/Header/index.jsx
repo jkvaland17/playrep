@@ -13,29 +13,12 @@ const Index = () => {
 
   useEffect(()=>{
     setUserDate(userDetails())
-  },[isAuthenticated])
+  },[isAuthenticated()])
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const LogOut = () => {
-    Cookies.remove('token', { path: '/' });
-    Cookies.remove('agentDetails', { path: '/' });
-    Cookies.remove('userDetails', { path: '/' });
-    Cookies.remove('agentData', { path: '/' });
-    Cookies.remove('userdata', { path: '/' });
-    localStorage.removeItem('agentData');
-    localStorage.removeItem('userdata');
-    // navigate('/');
-};
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
 
     return (
         <div>

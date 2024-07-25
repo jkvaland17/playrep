@@ -1,10 +1,8 @@
 import React, { Suspense, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import Navbar from "./Navbar";
-import logo from "../assets/images/logo.png";
-import Footer from "../Layout/Footer"
-import Header from "../Layout/Header"
+import Footer from "../Layout/Footer";
+import Header from "../Layout/Header";
 
 function Layout({ children, title }) {
   const navigate = useNavigate();
@@ -28,32 +26,14 @@ function Layout({ children, title }) {
   return (
     <div>
       <div className={`dashboard_wrapper ${show ? "active" : ""} main`}>
-        {/* <div className="left_side_wrapper ">
-          <div className={"left_side_inner_sec"}></div>
-          <div>
-            <ListItemButton
-              sx={{ padding: "5px 15px" }}
-              className="list_item logout_btn"
-              onClick={() => LogOut()}
-            >
-              <ListItemIcon style={{ minWidth: "20px" }}>
-                <LogoutIcon />
-              </ListItemIcon>
-              <ListItemText primary="Logout" className="menu_label" />
-            </ListItemButton>
-          </div>
-        </div> */}
-
         <div className="gridContainer dashboard_play">
-			<Header/>
+          <Header />
           <Suspense fallback={""}>
             <div className={"container"}>{children}</div>
           </Suspense>
-		  <Footer/>
+          <Footer />
         </div>
-		
       </div>
-
     </div>
   );
 }

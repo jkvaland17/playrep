@@ -35,7 +35,7 @@ const Funab = () => {
   ];
 
   return (
-    <Paper sx={{ p: 3 }} className="outer-box game-rules-section">
+    <Paper sx={{ p: 3,background:"none", boxShadow: "none" }} className="outer-box game-rules-section">
       <h2>Fun Ab</h2>
       <CustomTable
         headCells={columns}

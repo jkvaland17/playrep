@@ -18,7 +18,7 @@ const PockerRevenue = () => {
     state: "All States",
   });
   return (
-    <Paper sx={{ p: 3 }} className="outer-box game-rules-section">
+    <Paper sx={{ p: 3, background:"none", boxShadow: "none" }} className="outer-box game-rules-section">
       <div className={"justify_content_between"}>
         <div className={"d_flex"} style={{ justifyContent: "end" }}>
           <MainCommonFilter

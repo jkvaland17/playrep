@@ -107,7 +107,7 @@ const PointTransfer = () => {
     },
   ];
   return (
-    <Paper style={{ padding: "2rem" }}>
+    <Paper style={{ padding: "2rem", background:"none", boxShadow: "none" }}>
       <h2>Point Transfer</h2>
       <div>
         {PointTransfer.map((e) => {

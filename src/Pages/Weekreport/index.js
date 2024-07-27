@@ -40,7 +40,7 @@ const Weekreport = () => {
   ];
 
   return (
-    <Paper style={{ padding: "2rem" }}>
+    <Paper style={{ padding: "2rem",background:"none", boxShadow: "none" }}>
       <h2>Weekly Details Report</h2>
       <div className={"justify_content_between"}>
         <div className={"d_flex"} style={{ justifyContent: "end" }}>

@@ -36,7 +36,7 @@ const Triplefun = () => {
   ];
 
   return (
-    <Paper sx={{ p: 3 }} className="outer-box game-rules-section">
+    <Paper sx={{ p: 3,background:"none", boxShadow: "none" }} className="outer-box game-rules-section">
       <h2>Triple Fun</h2>
       <CustomTable
         headCells={columns}

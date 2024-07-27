@@ -49,7 +49,7 @@ const CustomDateFilter = ({ filterData, setFilterData,addPropsFilter }) => {
             {
                 !addPropsFilter?.inActiveUsers &&(
                     <>
-                        <div className={'date-to'}>TO</div>
+                        {/* <div className={'date-to'}>TO</div> */}
                         <div className={'end-date-picker'}>
                             <LocalizationProvider dateAdapter={AdapterDateFns} >
                                 <DatePicker
@@ -78,30 +78,6 @@ const CustomDateFilter = ({ filterData, setFilterData,addPropsFilter }) => {
                     </>
                 )
             }
-            {/* <div className={'date-to'}>TO</div>
-            <div className={'end-date-picker'}>
-                <LocalizationProvider dateAdapter={AdapterDateFns} >
-                    <DatePicker
-                        name='end-date'
-                        value={filterData.endDate}
-                        onChange={(newValue) => handleDatePicker(newValue, 'endDate')}
-                        open={openCale.endDate}
-                        onClose={() => setOpenCale({ ...openCale, endDate: false })}
-                        inputFormat="MM dd, yyyy"
-                        minDate={filterData?.startDate}
-                        renderInput={(params) => <TextField {...params} onClick={() => setOpenCale({ ...openCale, endDate: !openCale?.endDate })} />}
-                        inputProps={{ readOnly: true ,placeholder: "Select End Date"}}
-                        maxDate={new Date()}
-                    />
-                </LocalizationProvider>
-            </div> */}
-            {/*{*/}
-            {/*    (filterData?.startDate &&  filterData.endDate) &&*/}
-            {/*    <div>*/}
-            {/*        <button>Clear Filter</button>*/}
-            {/*    </div>*/}
-            {/*}*/}
-
         </div>
     )
 }

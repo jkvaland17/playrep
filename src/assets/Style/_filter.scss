@@ -122,6 +122,7 @@
         }
         .start-date-picker,.end-date-picker{
           height: 100%;
+          background-color: white;
           display: flex;
           align-items: center;
           border: 1px solid  #ced4da;
@@ -160,6 +161,7 @@ fieldset {
 }
 
 .input_search_field input {
+  background-color: white;
   border: 1px solid #cfd8e3;
   border-radius: 5px;
 }

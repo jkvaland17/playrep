@@ -18,7 +18,7 @@ const MainCommonFilter = ({
     <>
       <div className={"filter_details_tab_section"}>
         <div className={"filter_inner_tab_info"}>
-          <DayWiseDropDown
+          {/* <DayWiseDropDown
             option={[...commonOptions]}
             name={"statusValue"}
             filterData={filterData}
@@ -30,7 +30,12 @@ const MainCommonFilter = ({
               setFilterData={setFilterData}
               addPropsFilter={addPropsFilter?.isTDSChallan}
             />
-          )}
+          )} */}
+          <CustomDateFilter
+              filterData={filterData}
+              setFilterData={setFilterData}
+              addPropsFilter={addPropsFilter?.isTDSChallan}
+            />
           <SearchFilter
             filterData={filterData}
             setFilterData={setFilterData}

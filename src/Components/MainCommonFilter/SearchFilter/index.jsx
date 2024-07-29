@@ -93,7 +93,7 @@ const SearchFilter = ({
             value={filterData?.search}
             onChange={handleChange}
             endAdornment={filterData.filterClose && filterData.search !== "" && (
-              <p onClick={filterSearchHandler}>
+              <p onClick={filterSearchHandler} className="is_search">
                 <svg
                   viewBox="0 0 24 24"
                   x="1008"

@@ -16,8 +16,8 @@ const Agentmail = () => {
   });
   const [pagination, setPagination] = useState({ rowsPerPage: 10, page: 0 });
   const [filterData, setFilterData] = useState({
-    startDate: moment().format("YYYY-MM-DD"),
-    endDate: moment().format("YYYY-MM-DD"),
+    startDate: null,
+    endDate: null,
     statusValue: "All Days",
     exportFile: false,
     csvDownload: false,

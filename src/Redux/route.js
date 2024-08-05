@@ -1,2 +1,2 @@
-export const AUTH_LOGIN = '/login';
+export const AUTH_LOGIN = '/greport/login';
 export const POINT_TRANSFER = '/getTransactionHistory';

@@ -45,7 +45,7 @@ const Login = () => {
   function generateCaptcha() {
     const chars = "0123456789";
     let captcha = "";
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 4; i++) {
       captcha += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return captcha;
@@ -65,7 +65,8 @@ const Login = () => {
       if (simpleValidator.current.allValid()) {
         setLoader(true);
         let payload = {
-          ...formData,
+          userName: formData?.userName,
+          password: formData?.password,
         };
         dispatch(loginUser(payload)).then((res) => {
           if (res.data.success) {

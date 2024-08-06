@@ -188,7 +188,7 @@ const CustomTable = (props) => {
           <TableBody>
             {loading && (
               <TableLoader
-                height={"50vh"}
+                height={"25vh"}
                 width={ref?.current?.childNodes?.[1]?.clientWidth}
               />
             )}

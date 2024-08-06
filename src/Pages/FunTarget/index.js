@@ -1,4 +1,4 @@
-import { Paper } from "@mui/material";
+import { Paper, TableCell } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CustomTable from "../../hoc/CommonTable";
 import moment from "moment";
@@ -12,19 +12,6 @@ const FunTarget = () => {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
   
-  const [filterData, setFilterData] = useState({
-    startDate: moment().format("YYYY-MM-DD"),
-    endDate: moment().format("YYYY-MM-DD"),
-    statusValue: "All Days",
-    exportFile: false,
-    csvDownload: false,
-    search: "",
-    filterClose: false,
-    exportFileName: "Export File",
-    platformName: "All Users",
-    state: "All States",
-  });
-
   let columns = [
     {
       id: "",
@@ -34,28 +21,21 @@ const FunTarget = () => {
       render: (row, i) => renderSrNo(row, i, pagination),
     },
     {
-      id: "id",
-      label: "id",
-    },
-    {
       id: "selectNumber",
-      label: "selectNumber",
+      label: "Winning No",
     },
     {
-      id: "totalBetAmount",
-      label: "totalBetAmount",
-    },
-    {
-      id: "totalDistributeAmount",
-      label: "totalDistributeAmount",
-    },
-    {
-      id: "totalProfit",
-      label: "totalProfit",
-    },
-    {
-      id: "status",
-      label: "status",
+      id: "updatedAt",
+      label: "Drow Time",
+      twoLineText: true,
+      type: "custom",
+      render: (row) => {
+        return (
+          <TableCell>
+            {moment(row?.updatedAt).format("MMM DD YYYY, hh:mm A")}
+          </TableCell>
+        );
+      },
     },
   ];
 

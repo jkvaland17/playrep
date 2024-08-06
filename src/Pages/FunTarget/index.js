@@ -11,7 +11,7 @@ const FunTarget = () => {
   const [rowData, setRowData] = useState({ list: [], totalDocs: 0 });
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
-  
+
   let columns = [
     {
       id: "",

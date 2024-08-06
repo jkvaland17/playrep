@@ -44,24 +44,24 @@ const PointTransfer = () => {
     },
   ];
 
-  useEffect(() => {
-    getPointTransferListData();
-  }, [pagination.rowsPerPage, pagination.page]);
+  // useEffect(() => {
+  //   getPointTransferListData();
+  // }, [pagination.rowsPerPage, pagination.page]);
 
-  const getPointTransferListData = () => {
-    setLoader(true);
-    let payload = {
-      limit: pagination.rowsPerPage,
-      start: (pagination.page + 1 - 1) * pagination.rowsPerPage,
-    };
-	  dispatch(getPointTransferList(payload)).then((res) => {
-      setLoader(false);
-      setRowData({
-        ...rowData,
-        list: res?.data,
-      });
-    });
-  };
+  // const getPointTransferListData = () => {
+  //   setLoader(true);
+  //   let payload = {
+  //     limit: pagination.rowsPerPage,
+  //     start: (pagination.page + 1 - 1) * pagination.rowsPerPage,
+  //   };
+	//   dispatch(getPointTransferList(payload)).then((res) => {
+  //     setLoader(false);
+  //     setRowData({
+  //       ...rowData,
+  //       list: res?.data,
+  //     });
+  //   });
+  // };
 
   const PointTransfer = [
     {

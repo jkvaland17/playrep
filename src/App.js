@@ -12,7 +12,7 @@ const App = () => {
       <BrowserRouter>
       <Layout>
         <Routes>
-          {PublicroutesArray.map(({ component: Component, path }, key) => {
+          {PublicroutesArray?.map(({ component: Component, path }, key) => {
             return (
               <Route
                 path={path}

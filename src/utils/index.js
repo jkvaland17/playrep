@@ -1,3 +1,4 @@
+import { TableCell } from '@mui/material';
 import Cookies from 'js-cookie';
 let CryptoJS = require("crypto-js");
 
@@ -25,4 +26,8 @@ export const userDetails = () => {
   
     // Return default user details in case of decryption failure or invalid cookie
     return { role: '', email: '' };
-  };
+};
+  
+export const renderSrNo = (row, i, pagination) => {
+  return <TableCell>{+pagination.rowsPerPage * ((+pagination.page + 1) - 1) + i + 1}</TableCell>;
+};

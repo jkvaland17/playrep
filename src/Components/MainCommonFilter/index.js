@@ -13,39 +13,29 @@ const MainCommonFilter = ({
   isSearchTooltip,
   userSearchApiHandler,
 }) => {
-  const commonOptions = ["All Days", "Custom"];
   return (
     <>
       <div className={"filter_details_tab_section"}>
         <div className={"filter_inner_tab_info"}>
-          {/* <DayWiseDropDown
-            option={[...commonOptions]}
-            name={"statusValue"}
-            filterData={filterData}
-            setFilterData={setFilterData}
-          />
-          {filterData?.statusValue === "Custom" && (
+          {addPropsFilter?.isDateFilter && (
             <CustomDateFilter
               filterData={filterData}
               setFilterData={setFilterData}
               addPropsFilter={addPropsFilter?.isTDSChallan}
             />
-          )} */}
-          <CustomDateFilter
+          )}
+          {addPropsFilter?.isSearchFilter && (
+            <SearchFilter
               filterData={filterData}
               setFilterData={setFilterData}
-              addPropsFilter={addPropsFilter?.isTDSChallan}
+              searchApiHandler={searchApiHandler}
+              pagination={pagination}
+              setPagination={setPagination}
+              isSearchTooltip={isSearchTooltip}
+              userSearchApiHandler={userSearchApiHandler}
+              isTdsUser={addPropsFilter?.isTdsUser}
             />
-          <SearchFilter
-            filterData={filterData}
-            setFilterData={setFilterData}
-            searchApiHandler={searchApiHandler}
-            pagination={pagination}
-            setPagination={setPagination}
-            isSearchTooltip={isSearchTooltip}
-            userSearchApiHandler={userSearchApiHandler}
-            isTdsUser={addPropsFilter?.isTdsUser}
-          />
+          )}
         </div>
       </div>
     </>

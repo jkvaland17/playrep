@@ -126,11 +126,16 @@
 			}
 
 			input {
-				padding: 12px 14px;
+				padding: 1px 14px;
+				background-color: rgb(243, 242, 242);
+				border: 0.5px solid gray;
+				&::placeholder{
+					font-size: 12px;
+				} 
 			}
 
 			.search_btn {
-				height: 50px;
+				height: 25px;
 			}
 		}
 
@@ -147,19 +152,27 @@
 				font-size: 14px;
 				font-family: "Inter", sans-serif;
 			}
-
+			.date-label{
+				width: 80px !important;
+				color: aliceblue;
+			}
+		
 			.start-date-picker,
 			.end-date-picker {
-				height: 100%;
-				background-color: white;
+				height: 50%;
+				background-color: rgb(243, 242, 242);
 				display: flex;
 				align-items: center;
-				border: 1px solid #ced4da;
 				border-radius: 4px;
 				padding: 0 0 0 11px;
 				margin-left: 5px;
 				margin-right: 5px;
 				font-family: "Inter", sans-serif;
+				border: 0.5px solid gray;
+				gap: 10px;
+				input::placeholder {
+					font-size: 12px;
+				}
 			}
 		}
 	}

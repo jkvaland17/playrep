@@ -1,17 +1,9 @@
-import React, { useState } from "react";
-import TextField from '@mui/material/TextField';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import React from "react";
 import moment from "moment";
 
-const CustomDateFilter = ({ filterData, setFilterData,addPropsFilter }) => {
-    const [openCale, setOpenCale] = useState({
-        endDate: false,
-        startDate: false
-    });
-
-    const handleDatePicker = (newValue, type) => {
+const CustomDateFilter = ({ filterData, setFilterData, addPropsFilter }) => {
+    const handleDatePicker = (event, type) => {
+        const newValue = event.target.value;
         if (type === 'startDate') {
             setFilterData({
                 ...filterData,
@@ -22,81 +14,40 @@ const CustomDateFilter = ({ filterData, setFilterData,addPropsFilter }) => {
         } else {
             setFilterData({ ...filterData, endDate: moment(newValue).format('YYYY-MM-DD') });
         }
-        setOpenCale({ ...openCale, [type]: false });
     };
 
     return (
-        <div className={'custom_date_filter'}>
-              <label className="date-label" htmlFor="">Start date</label>
-            <div className={'start-date-picker'}>
-                <LocalizationProvider dateAdapter={AdapterDateFns} >
-                    <DatePicker
-                        name='start-date'
-                        value={filterData?.startDate}
-                        onChange={(newValue) => handleDatePicker(newValue, 'startDate')}
-                        open={openCale.startDate}
-                        onClose={() => setOpenCale({ ...openCale, startDate: false })}
-                        renderInput={(params) => {
-                            return <TextField {...params} 
-                            sx={{ input: { cursor: 'pointer' } }} 
-                            InputProps={{  
-                                ...params.InputProps,  
-                                disableUnderline: true,  
-                                endAdornment: null 
-                            }}  
-                            onClick={() => setOpenCale({ ...openCale, startDate: !openCale?.startDate}) } />
-                        }}
-                        inputFormat="MMM dd, yyyy"
-                        inputProps={{ readOnly: true ,placeholder: "Select Start Date"}}
-                        //maxDate={new Date()}
-                        maxDate={ addPropsFilter?.isTDSChallan ? moment().date(Number(moment().format('DD')) - 1)  : new Date()}
-
-                    />
-                </LocalizationProvider>
+        <div className="custom_date_filter">
+            <label className="date-label" htmlFor="start-date">Start date</label>
+            <div className="start-date-picker">
+                <input
+                    type="date"
+                    name="start-date"
+                    value={filterData?.startDate || ''}
+                    onChange={(event) => handleDatePicker(event, 'startDate')}
+                    max={addPropsFilter?.isTDSChallan ? moment().subtract(1, 'day').format('YYYY-MM-DD') : moment().format('YYYY-MM-DD')}
+                    placeholder="Select Start Date"
+                />
             </div>
-            {
-                !addPropsFilter?.inActiveUsers &&(
-                    <>
-                        {/* <div className={'date-to'}>TO</div> */}
-                        <label className="date-label" htmlFor="">End date</label>
-                        <div className={'end-date-picker'}>
-                          
-                            <LocalizationProvider dateAdapter={AdapterDateFns} >
-                                <DatePicker
-                                    name='end-date'
-                                    value={filterData.endDate}
-                                    onChange={(newValue) => handleDatePicker(newValue, 'endDate')}
-                                    open={openCale.endDate}
-                                    onClose={() => setOpenCale({ ...openCale, endDate: false })}
-                                    inputFormat="MMM dd, yyyy"
-                                    minDate={filterData?.startDate}
-                                    renderInput={({ inputProps, ...restParams }) => {
-                                        return <TextField
-                                            {...restParams}
-                                            sx={{ input: { cursor: 'pointer',
-                                             } }} 
-                                             InputLabelProps={{ shrink: true }}
-                                            InputProps={{  
-                                                ...restParams,  
-                                                disableUnderline: true,  
-                                                endAdornment: null 
-                                            }} 
-                                            onClick={() => setOpenCale({ ...openCale, endDate: !openCale?.endDate })}
-                                            inputProps={{
-                                                ...inputProps,
-                                                placeholder: "Select End Date",
-                                            }}
-                                        />
-                                    }}
-                                    inputProps={{ readOnly: true }}
-                                    maxDate={ addPropsFilter?.isTDSChallan ? moment().date(Number(moment().format('DD')) - 1)  : new Date()}
-                                />
-                            </LocalizationProvider>
-                        </div>
-                    </>
-                )
-            }
+
+            {!addPropsFilter?.inActiveUsers && (
+                <>
+                    <label className="date-label" htmlFor="end-date">End date</label>
+                    <div className="end-date-picker">
+                        <input
+                            type="date"
+                            name="end-date"
+                            value={filterData?.endDate || ''}
+                            onChange={(event) => handleDatePicker(event, 'endDate')}
+                            min={filterData?.startDate || ''}
+                            max={addPropsFilter?.isTDSChallan ? moment().subtract(1, 'day').format('YYYY-MM-DD') : moment().format('YYYY-MM-DD')}
+                            placeholder="Select End Date"
+                        />
+                    </div>
+                </>
+            )}
         </div>
-    )
-}
-export default CustomDateFilter
+    );
+};
+
+export default CustomDateFilter;

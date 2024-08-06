@@ -173,7 +173,7 @@ const CustomTable = (props) => {
     <div ref={ref}>
       <TableContainer className={"data-table"}>
         <Table
-          sx={{ minWidth: 750 }}
+          sx={{ minWidth: 750, position:'relative' }}
           aria-labelledby="tableTitle"
           size={"small"}
           className="publish_table"

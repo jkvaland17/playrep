@@ -5,11 +5,12 @@ const TableLoader = ({ width, height }) => {
   return (
     <Box
       sx={{
-        width: width,
+        // width: width,
         height: height,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
       }}
       className={"Testing"}
     >

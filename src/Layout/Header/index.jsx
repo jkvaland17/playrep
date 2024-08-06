@@ -28,7 +28,7 @@ const Index = () => {
               <span>Welcome</span>
               <strong id="logout">
                 &nbsp;
-                <em onClick={handleClick}>{userDate?.first_name}</em>
+                <em onClick={handleClick}>{userDate?.userName}</em>
                 &nbsp;
               </strong>
             </div>

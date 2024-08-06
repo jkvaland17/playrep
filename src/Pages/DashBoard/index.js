@@ -36,26 +36,29 @@ const DashBoard = () => {
   });
 
   return (
-    <Paper sx={{ p: 3, background:"none", boxShadow: "none" }} className="outer-box game-rules-section">
+    <Paper
+      sx={{ p: 3, background: "none", boxShadow: "none" }}
+      className="outer-box game-rules-section"
+    >
       <div className={"justify_content_between"}>
-          <div className={"d_flex"} style={{justifyContent:"end"}}>
-            <MainCommonFilter
-              filterData={filterData}
-              setFilterData={setFilterData}
-              // searchApiHandler={getUserListData}
-              pagination={pagination}
-              setPagination={setPagination}
-              plateFormOption={[
-                "All Users",
-                "Blocked Users Accounts",
-                "Unblocked Users Accounts",
-              ]}
-              addPropsFilter={{
-              }}
-            />
-          </div>
+        <div className={"d_flex"} style={{ justifyContent: "end" }}>
+          <MainCommonFilter
+            filterData={filterData}
+            setFilterData={setFilterData}
+            pagination={pagination}
+            setPagination={setPagination}
+            plateFormOption={[
+              "All Users",
+              "Blocked Users Accounts",
+              "Unblocked Users Accounts",
+            ]}
+            addPropsFilter={{
+              isDateFilter: true,
+              isSearchFilter: true,
+            }}
+          />
         </div>
-		
+      </div>
       <CustomTable
         headCells={columns}
         rowData={data.data.docs}
@@ -63,7 +66,7 @@ const DashBoard = () => {
         pagination={pagination}
         setPagination={setPagination}
       />
-      </Paper>
+    </Paper>
   );
 };
 

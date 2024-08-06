@@ -27,6 +27,7 @@ const CustomDateFilter = ({ filterData, setFilterData,addPropsFilter }) => {
 
     return (
         <div className={'custom_date_filter'}>
+              <label className="date-label" htmlFor="">Start date</label>
             <div className={'start-date-picker'}>
                 <LocalizationProvider dateAdapter={AdapterDateFns} >
                     <DatePicker
@@ -36,7 +37,14 @@ const CustomDateFilter = ({ filterData, setFilterData,addPropsFilter }) => {
                         open={openCale.startDate}
                         onClose={() => setOpenCale({ ...openCale, startDate: false })}
                         renderInput={(params) => {
-                            return <TextField {...params} onClick={() => setOpenCale({ ...openCale, startDate: !openCale?.startDate}) } />
+                            return <TextField {...params} 
+                            sx={{ input: { cursor: 'pointer' } }} 
+                            InputProps={{  
+                                ...params.InputProps,  
+                                disableUnderline: true,  
+                                endAdornment: null 
+                            }}  
+                            onClick={() => setOpenCale({ ...openCale, startDate: !openCale?.startDate}) } />
                         }}
                         inputFormat="MMM dd, yyyy"
                         inputProps={{ readOnly: true ,placeholder: "Select Start Date"}}
@@ -50,7 +58,9 @@ const CustomDateFilter = ({ filterData, setFilterData,addPropsFilter }) => {
                 !addPropsFilter?.inActiveUsers &&(
                     <>
                         {/* <div className={'date-to'}>TO</div> */}
+                        <label className="date-label" htmlFor="">End date</label>
                         <div className={'end-date-picker'}>
+                          
                             <LocalizationProvider dateAdapter={AdapterDateFns} >
                                 <DatePicker
                                     name='end-date'
@@ -63,6 +73,14 @@ const CustomDateFilter = ({ filterData, setFilterData,addPropsFilter }) => {
                                     renderInput={({ inputProps, ...restParams }) => {
                                         return <TextField
                                             {...restParams}
+                                            sx={{ input: { cursor: 'pointer',
+                                             } }} 
+                                             InputLabelProps={{ shrink: true }}
+                                            InputProps={{  
+                                                ...restParams,  
+                                                disableUnderline: true,  
+                                                endAdornment: null 
+                                            }} 
                                             onClick={() => setOpenCale({ ...openCale, endDate: !openCale?.endDate })}
                                             inputProps={{
                                                 ...inputProps,

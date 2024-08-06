@@ -55,6 +55,7 @@ const DashBoard = () => {
             />
           </div>
         </div>
+		
       <CustomTable
         headCells={columns}
         rowData={data.data.docs}

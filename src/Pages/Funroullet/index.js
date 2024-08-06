@@ -70,6 +70,7 @@ const Funroullet = () => {
         totalDocs={rowData?.totalDocs}
         pagination={pagination}
         setPagination={setPagination}
+        loading={loader}
       />
     </Paper>
   )

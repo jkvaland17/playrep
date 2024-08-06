@@ -41,10 +41,10 @@ const Funroullet = () => {
   ];
 
   useEffect(() => {
-    getFunTargetListData();
+    getFunRoulletListData();
   }, [pagination.rowsPerPage, pagination.page]);
 
-  const getFunTargetListData = () => {
+  const getFunRoulletListData = () => {
     setLoader(true);
     let payload = {
       limit: pagination.rowsPerPage,

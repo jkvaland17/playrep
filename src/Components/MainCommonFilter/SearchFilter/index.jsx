@@ -85,15 +85,26 @@ const SearchFilter = ({
               : ""
           }
         >
-          <OutlinedInput
+            <div className='outlined-Search' style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
+            <OutlinedInput
             id="component-outlined"
             placeholder="Search"
             className="input_search_field fontFamily"
             name="search"
             value={filterData?.search}
             onChange={handleChange}
-            endAdornment={filterData.filterClose && filterData.search !== "" && (
-              <p onClick={filterSearchHandler} className="is_search">
+           
+            onKeyDown={handleKeyPress} 
+          />
+          { filterData.filterClose && filterData.search !== "" && (
+              <p onClick={filterSearchHandler} className="is_search"  style={{
+                position: 'absolute',
+                right: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer',
+                color: '#64748b',
+              }}>
                 <svg
                   viewBox="0 0 24 24"
                   x="1008"
@@ -111,8 +122,8 @@ const SearchFilter = ({
                 </svg>
               </p>
             )}
-            onKeyDown={handleKeyPress} 
-          />
+            </div>
+         
         </Tooltip>
 
         {/* {filterData.filterClose && filterData.search !== "" && (

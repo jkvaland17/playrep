@@ -7,8 +7,6 @@ import { renderSrNo } from "../../utils";
 import { useDispatch } from "react-redux";
 import { getFunTargetList } from "../../Redux/drawDetails/action";
 
-
-
 const DashBoard = () => {
   const [pagination, setPagination] = useState({ rowsPerPage: 10, page: 0 });
   const dispatch = useDispatch();
@@ -26,6 +24,8 @@ const DashBoard = () => {
     platformName: "All Users",
     state: "All States",
   });
+  const [dateFilter, setDateFilter] = useState(filterData);
+  let prevDateFilter = React.useRef(dateFilter);
 
   let columns = [
     {
@@ -58,11 +58,61 @@ const DashBoard = () => {
     getFunRoulletListData();
   }, [pagination.rowsPerPage, pagination.page]);
 
-  const getFunRoulletListData = () => {
+  useEffect(() => {
+    if (
+      filterData?.statusValue === "Custom" &&
+      filterData.startDate === null &&
+      filterData.endDate === null &&
+      prevDateFilter?.current?.statusValue !== "Custom"
+    ) {
+      getFunRoulletListData(
+        prevDateFilter?.current?.startDate,
+        prevDateFilter?.current?.endDate
+      );
+    } else if (
+      (filterData.startDate && filterData.endDate) ||
+      filterData?.statusValue === "All Days"
+    ) {
+      getFunRoulletListData(
+        filterData.startDate,
+        filterData.endDate,
+        filterData.search
+      );
+    }
+  }, [
+    pagination.rowsPerPage,
+    pagination.page,
+    filterData?.endDate,
+    filterData?.startDate,
+    filterData?.statusValue,
+    filterData?.statusField,
+    filterData.exportFile,
+    filterData.csvDownload,
+    filterData.platformName,
+    filterData.state,
+  ]);
+
+  useEffect(() => {
+    if (
+      filterData.startDate &&
+      filterData.endDate &&
+      filterData?.statusValue === "Custom"
+    ) {
+      setPagination({
+        ...pagination,
+        page: 0,
+      });
+    }
+  }, [filterData.startDate, filterData.endDate]);
+
+  const getFunRoulletListData = (startDate, endDate, search) => {
     setLoader(true);
     let payload = {
       limit: pagination.rowsPerPage,
       start: (pagination.page + 1 - 1) * pagination.rowsPerPage,
+      searchText: search,
+      startDate: startDate ? moment(startDate).format("YYYY-MM-DD") : null,
+      endDate: endDate ? moment(endDate).format("YYYY-MM-DD") : null,
       gameType: "FUN_TARGET",
     };
     dispatch(getFunTargetList(payload)).then((res) => {
@@ -85,6 +135,7 @@ const DashBoard = () => {
           <MainCommonFilter
             filterData={filterData}
             setFilterData={setFilterData}
+            searchApiHandler={getFunRoulletListData}
             pagination={pagination}
             setPagination={setPagination}
             plateFormOption={[
@@ -95,6 +146,7 @@ const DashBoard = () => {
             addPropsFilter={{
               isDateFilter: true,
               isSearchFilter: true,
+              setDateFilter,
             }}
           />
         </div>

@@ -2,10 +2,10 @@ import { Paper, TableCell } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CustomTable from "../../../hoc/CommonTable";
 import { useDispatch } from "react-redux";
-import { getPointTransferList } from "../../../Redux/pointtransfer/action";
+import { getPointRejectedList } from "../../../Redux/pointtransfer/action";
 import moment from "moment";
 
-const PointTransferred = () => {
+const PointRejected = () => {
   const [pagination, setPagination] = useState({ rowsPerPage: 10, page: 0 });
   const [rowData, setRowData] = useState({ list: [], totalDocs: 0 });
   const dispatch = useDispatch();
@@ -57,16 +57,16 @@ const PointTransferred = () => {
   ];
 
   useEffect(() => {
-    getPointTransferredListData();
+    getPointRejectedListData();
   }, [pagination.rowsPerPage, pagination.page]);
 
-  const getPointTransferredListData = () => {
+  const getPointRejectedListData = () => {
     setLoader(true);
     let payload = {
       limit: pagination.rowsPerPage,
       start: (pagination.page + 1 - 1) * pagination.rowsPerPage,
     };
-    dispatch(getPointTransferList(payload)).then((res) => {
+    dispatch(getPointRejectedList(payload)).then((res) => {
       setLoader(false);
       setRowData({
         ...rowData,
@@ -90,4 +90,4 @@ const PointTransferred = () => {
   );
 };
 
-export default PointTransferred;
+export default PointRejected;
